@@ -48,6 +48,7 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'rails-erd'
   gem 'annotate'
+  gem 'rails-controller-testing'
 end
 
 group :development do
