@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe "ProductsRequests", type: :request do
   describe "GET #show" do
     let(:product) { create(:product) }
+
     before do
       get potepan_product_path(product.id)
     end
