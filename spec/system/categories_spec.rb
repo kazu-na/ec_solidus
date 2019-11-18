@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe "CategoriesSystems", type: :system do
   describe "categories pages" do
-    let (:taxonomy)  { create(:taxonomy, name: 'Categories') }
-    let (:taxon_1)   { create(:taxon,    name: 'Bags',  taxonomy: taxonomy) }
-    let (:taxon_2)   { create(:taxon,    name: 'Mugs',  taxonomy: taxonomy) }
+    let(:taxonomy)   { create(:taxonomy, name: 'Categories') }
+    let(:taxon_1)    { create(:taxon,    name: 'Bags',  taxonomy: taxonomy) }
+    let(:taxon_2)    { create(:taxon,    name: 'Mugs',  taxonomy: taxonomy) }
     let!(:product_1) { create(:product,  name: 'TOTE',  price: 500.50, taxons: [taxon_1]) }
     let!(:product_2) { create(:product,  name: 'STEIN', price: 300.30, taxons: [taxon_2]) }
 
