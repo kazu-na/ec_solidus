@@ -45,7 +45,9 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.html"><%= image_tag("img/logo.png", :alt => "") %></a>
+        <%= link_to potepan_path, class: "navbar-brand" do %>
+          <%= image_tag("img/logo.png", :alt => "") %>
+        <% end %>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
