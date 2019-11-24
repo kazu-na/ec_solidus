@@ -12,7 +12,7 @@
                 <li>
                   <%= link_to potepan_category_path(taxon.id) do %>
                     <i class="fa fa-caret-right" aria-hidden="true"></i><%= taxon.name %>
-                    <span>(<%= Spree::Product.in_taxon(taxon).count %>)</span>
+                    <span>(<%= taxon.all_products.count %>)</span>
                   <% end %>
                 </li>
               <% end %>
