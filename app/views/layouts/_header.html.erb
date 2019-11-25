@@ -26,7 +26,9 @@
               </ul>
             </li>
             <li class="dropdown">
-              <a href="cart-page.html" class="dropdown-toggle" data-toggle="dropdown disabled"><i class="fa fa-shopping-cart"></i></a>
+              <%= link_to "#", data: { toggle: "dropdown disabled" } do %>
+                <i class="fa fa-shopping-cart"></i>
+              <% end %>
             </li>
           </ul>
         </div>
