@@ -114,7 +114,13 @@ $ heroku run bin/rails db:migrate
 `heroku run`は与えられた任意のコマンドをHeroku上で実行するコマンドです。
 ここでは `bin/rails db:migrate`を実行し、必要なテーブルを作成しています。
 
-これでテーブルは作成できたはずです。アプリケーションのURLにアクセスしてみましょう。
+また、下記コマンドも実行もしてSample Storeのテーブルを作っておきましょう。
+これを実行しないと商品をカートに入れる実装をした時にエラーカート系のテーブルがなくエラーが起こります。
+```sh
+$ heroku run bin/rails runner 'Spree::Store.create!(name: "Sample Store", code: "sample-store", url: "example.com", mail_from_address: "store@example.com")'
+```
+
+これで必要なテーブルは作成できたはずです。アプリケーションのURLにアクセスしてみましょう。
 
 ![Solidus initial view](../images/deploy/solidus_initial_view.png)
 
