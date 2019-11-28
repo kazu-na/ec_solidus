@@ -6,16 +6,16 @@ RSpec.describe "ProductsSystems", type: :system do
     let(:taxon_2) { create(:taxon, name: 'Mugs') }
     let!(:product_1) do
       create(:product,
-             name:        'TOTE',
-             price:       500.50,
+             name: 'TOTE',
+             price: 500.50,
              description: 'foobar',
-             taxons:      [taxon_1])
+             taxons: [taxon_1])
     end
     let!(:product_2) do
       create(:product,
-             name:        'BAG',
-             price:       300.30,
-             taxons:      [taxon_1])
+             name: 'BAG',
+             price: 300.30,
+             taxons: [taxon_1])
     end
     let(:product_3) { create(:product, name: 'STEIN', taxons: [taxon_2]) }
 
