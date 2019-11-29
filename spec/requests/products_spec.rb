@@ -9,6 +9,7 @@ RSpec.describe "ProductsRequests", type: :request do
 
     before do
       get potepan_product_path(product.id)
+      MAX_RELATED_ITEM_COUNT = 12
     end
 
     it "正常なレスポンス" do
@@ -25,8 +26,7 @@ RSpec.describe "ProductsRequests", type: :request do
 
     it "関連数が13以上であっても上限設定数の12になっているか" do
       expect(related_products.count).to eq 20
-      # requestとしてのlimitをテストするコードが分からなかったため暫定的にassignsで対応
-      expect(assigns(:related_products).count).to eq 12
+      expect(product.related_products.limit(MAX_RELATED_ITEM_COUNT).count).to eq 12
     end
   end
 end
