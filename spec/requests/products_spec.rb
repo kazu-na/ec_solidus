@@ -4,7 +4,7 @@ RSpec.describe "ProductsRequests", type: :request do
   describe "GET #show" do
     let(:taxon)             { create(:taxon) }
     let!(:product)          { create(:product, name: 'TOTE', taxons: [taxon]) }
-    let(:product_etc)       { create(:product, name: 'STATUE') }
+    let!(:product_etc)      { create(:product, name: 'STATUE') }
     let(:related_products)  { create_list(:product, 20, taxons: [taxon]) }
 
     before do

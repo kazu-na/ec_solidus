@@ -17,7 +17,7 @@ RSpec.describe "ProductsSystems", type: :system do
              price: 300.30,
              taxons: [taxon_1])
     end
-    let(:product_3) { create(:product, name: 'STEIN', taxons: [taxon_2]) }
+    let!(:product_3) { create(:product, name: 'STEIN', taxons: [taxon_2]) }
 
     before do
       visit potepan_product_path(product_1.id)
@@ -34,7 +34,7 @@ RSpec.describe "ProductsSystems", type: :system do
     it "商品詳細ページから関連したカテゴリーの一覧ページへ移動" do
       expect(page).to have_link '一覧ページへ戻る'
       click_on '一覧ページへ戻る'
-      expect(current_path).to eq potepan_category_path(product_1.taxons.first.id)
+      expect(current_path).to eq potepan_category_path(taxon_1.id)
     end
 
     it "関連した商品が表示され、閲覧中の商品と関連していない商品は表示されないこと" do

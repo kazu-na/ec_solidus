@@ -5,7 +5,7 @@ RSpec.describe "CategoriesRequests", type: :request do
     let(:taxonomy)     { create(:taxonomy, name: 'Categories') }
     let(:taxon)        { create(:taxon,    name: 'Bags', taxonomy: taxonomy) }
     let!(:product)     { create(:product,  name: 'TOTE', taxons: [taxon]) }
-    let(:product_etc)  { create(:product,  name: 'STATUE') }
+    let!(:product_etc) { create(:product,  name: 'STATUE') }
 
     before do
       get potepan_category_path(taxon.id)
