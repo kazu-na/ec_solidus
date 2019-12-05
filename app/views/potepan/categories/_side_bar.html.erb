@@ -9,12 +9,12 @@
             <ul id="<%= taxonomy.id %>" class="collapse collapseItem">
               <% taxonomy.taxons.each do |taxon| %>
                 <% next unless taxon.leaf? %>
-                  <li>
-                    <%= link_to potepan_category_path(taxon.id) do %>
-                      <i class="fa fa-caret-right" aria-hidden="true"></i><%= taxon.name %>
-                      <span>(<%= Spree::Product.in_taxon(taxon).count %>)</span>
-                    <% end %>
-                  </li>
+                <li>
+                  <%= link_to potepan_category_path(taxon.id) do %>
+                    <i class="fa fa-caret-right" aria-hidden="true"></i><%= taxon.name %>
+                    <span>(<%= taxon.all_products.count %>)</span>
+                  <% end %>
+                </li>
               <% end %>
             </ul>
           <li>
