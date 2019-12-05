@@ -1,8 +1,8 @@
 <div class="media-left productSlider">
   <div id="carousel" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
-      <% product.images.each_with_index do |image, i| %>
-        <div class="item <%= "active" if i.zero? %>" data-thumb="<%= i %>">
+      <% product.images.each_with_index do |image, index| %>
+        <div class="item <%= "active" if index.zero? %>" data-thumb="<%= index %>">
           <%= image_tag image.attachment.url(:large) %>
         </div>
       <% end %>
@@ -11,8 +11,8 @@
   <div class="clearfix">
     <div id="thumbcarousel" class="carousel slide" data-interval="false">
       <div class="carousel-inner">
-        <% product.images.each_with_index do |image, i| %>
-          <div class="thumb" data-target="#carousel" data-slide-to="<%= i %>">
+        <% product.images.each_with_index do |image, index| %>
+          <div class="thumb" data-target="#carousel" data-slide-to="<%= index %>">
             <%= image_tag image.attachment.url(:small) %>
           </div>
         <% end %>
