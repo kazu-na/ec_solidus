@@ -5,8 +5,8 @@
       <ul class="nav navbar-nav side-nav">
         <% taxonomies.each do |taxonomy| %>
           <li>
-            <a href="javascript:;" data-toggle="collapse" data-target="#<%= taxonomy.id %>"><%= taxonomy.name %><i class="fa fa-plus"></i></a>
-            <ul id="<%= taxonomy.id %>" class="collapse collapseItem">
+            <a href="javascript:;" data-toggle="collapse" data-target="#category_<%= taxonomy.id %>"><%= taxonomy.name %><i class="fa fa-plus"></i></a>
+            <ul id="category_<%= taxonomy.id %>" class="collapse collapseItem">
               <% taxonomy.taxons.each do |taxon| %>
                 <% next unless taxon.leaf? %>
                 <li>

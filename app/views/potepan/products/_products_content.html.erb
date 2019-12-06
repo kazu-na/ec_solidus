@@ -10,7 +10,7 @@
         <%= link_to potepan_product_path(related_product.id) do %>
           <div class="slide">
             <div class="productImage clearfix">
-              <%= image_tag related_product.display_image.attachment(:product) %>
+              <%= image_tag related_product.display_image.attachment(:product), :alt => "related_product-img" %>
             </div>
             <div class="productCaption clearfix">
               <h5><%= related_product.name %></h5>
