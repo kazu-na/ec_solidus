@@ -1,4 +1,4 @@
 class Potepan::HomeController < ApplicationController
-  def top
+  def index
   end
 end
