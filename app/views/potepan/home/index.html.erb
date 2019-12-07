@@ -1,0 +1,13 @@
+<!-- BANNER -->
+<%= render 'banner' %>
+<!-- MAIN CONTENT SECTION -->
+<section class="mainContent clearfix">
+  <div class="container">
+    <%= render 'popular_categories' %>
+    <%= render 'new_products', new_products: @new_products %>
+  </div>
+</section>
+<!-- LIGHT SECTION -->
+<%= render 'shared/bottom_light_section' %>
+<!-- PRODUCT QUICK VIEW MODAL -->
+<%= render 'product_quick_view_modal' %>
