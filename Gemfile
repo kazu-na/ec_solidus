@@ -36,7 +36,9 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'solidus', '~> 2.9.0'
 gem 'solidus_auth_devise'
-gem 'solidus_i18n', github: 'solidusio-contrib/solidus_i18n', branch: 'master'
+gem 'solidus_i18n', '~> 2.0'
+gem 'rails-i18n', '~> 5.1'
+gem 'kaminari-i18n', '~> 0.5.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

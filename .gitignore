@@ -198,3 +198,5 @@ crashlytics-build.properties
 fabric.properties
 
 /docs/images/CI
+
+/public/assets
