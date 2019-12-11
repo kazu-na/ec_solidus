@@ -2,7 +2,9 @@ require 'rails_helper'
 
 RSpec.describe "HomeSystems", type: :system do
   describe "home pages" do
-    let(:taxon)        { create(:taxon) }
+    let(:taxon)              { create(:taxon) }
+    let!(:popular_taxon)     { create(:taxon, name: 'Clothing') }
+    let!(:popular_taxon_etc) { create(:taxon, name: 'Shirts') }
     let!(:new_product) do
       create(:product, name: 'TOTE',
                        price: 500.50,
@@ -25,11 +27,14 @@ RSpec.describe "HomeSystems", type: :system do
       end
     end
 
-    it "商品と価格が表示されること" do
-      within '.featuredProducts' do
-        expect(page).to have_content 'TOTE'
-        expect(page).to have_content '500.50'
+    it "人気カテゴリーからカテゴリーの一覧ページへ移動" do
+      within '.featuredCollection' do
+        expect(page).to have_content     'Clothing'
+        expect(page).not_to have_content 'Shirts'
       end
+      expect(page).to have_link 'Clothing'
+      click_on 'Clothing'
+      expect(current_path).to eq potepan_category_path(popular_taxon.id)
     end
 
     it "新着順に表示されること" do
@@ -37,6 +42,10 @@ RSpec.describe "HomeSystems", type: :system do
     end
 
     it "新着商品から商品詳細ページへ移動" do
+      within '.featuredProducts' do
+        expect(page).to have_content 'TOTE'
+        expect(page).to have_content '500.50'
+      end
       expect(page).to have_link 'TOTE'
       click_on 'TOTE'
       expect(current_path).to eq potepan_product_path(new_product.id)

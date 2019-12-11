@@ -3,7 +3,7 @@
 <!-- MAIN CONTENT SECTION -->
 <section class="mainContent clearfix">
   <div class="container">
-    <%= render 'popular_categories' %>
+    <%= render 'popular_categories', popular_taxons: @popular_taxons %>
     <%= render 'new_products', new_products: @new_products %>
   </div>
 </section>
