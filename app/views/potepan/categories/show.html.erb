@@ -1,6 +1,6 @@
 <% provide(:title, @taxon.name) %>
 <!-- LIGHT SECTION -->
-<%= render 'top_light_section', taxon: @taxon %>
+<%= render 'shared/product_bar', object: @taxon %>
 <!-- MAIN CONTENT SECTION -->
 <section class="mainContent clearfix productsContent">
   <div class="container">
@@ -16,4 +16,4 @@
   </div>
 </section>
 <!-- LIGHT SECTION -->
-<%= render 'shared/bottom_light_section' %>
+<%= render 'shared/brand_bar' %>

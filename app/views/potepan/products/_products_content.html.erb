@@ -4,21 +4,5 @@
       <h4>関連商品</h4>
     </div>
   </div>
-  <div class="col-xs-12">
-    <div class="productBox owl-carousel featuredProductsSlider">
-      <% related_products.each do |related_product| %>
-        <%= link_to potepan_product_path(related_product.id) do %>
-          <div class="slide">
-            <div class="productImage clearfix">
-              <%= image_tag related_product.display_image.attachment(:product), :alt => "related_product-img" %>
-            </div>
-            <div class="productCaption clearfix">
-              <h5><%= related_product.name %></h5>
-              <h3><%= related_product.display_price %></h3>
-            </div>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
+  <%= render 'shared/products_slider', object_products: object_products %>
 </div>

@@ -4,21 +4,5 @@
       <h4>新着商品</h4>
     </div>
   </div>
-  <div class="col-xs-12">
-    <div class="owl-carousel featuredProductsSlider">
-      <% new_products.each do |new_product| %>
-        <%= link_to potepan_product_path(new_product.id) do %>
-          <div class="slide">
-            <div class="productImage clearfix">
-              <%= image_tag new_product.display_image.attachment(:product), :alt => "new_product-img" %>
-            </div>
-            <div class="productCaption clearfix">
-              <h5><%= new_product.name %></h5>
-              <h3><%= new_product.display_price %></h3>
-            </div>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
+  <%= render 'shared/products_slider', object_products: object_products %>
 </div>
