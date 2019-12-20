@@ -11,7 +11,9 @@ RSpec.describe "HomeSystems", type: :system do
                        available_on: 1.day.ago,
                        taxons: [taxon])
     end
-    let!(:old_product) { create(:product, available_on: 2.day.ago, taxons: [taxon]) }
+    let!(:old_product) { create(:product,     available_on: 2.day.ago, taxons: [taxon]) }
+    let!(:colors)      { create(:option_type, presentation: 'Color') }
+    let!(:sizes)       { create(:option_type, presentation: 'Size') }
 
     before do
       visit potepan_path
@@ -42,7 +44,7 @@ RSpec.describe "HomeSystems", type: :system do
     end
 
     it "新着商品から商品詳細ページへ移動" do
-      within '.featuredProducts' do
+      within '.productBox' do
         expect(page).to have_content 'TOTE'
         expect(page).to have_content '500.50'
       end

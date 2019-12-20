@@ -1,0 +1,5 @@
+<li>
+  <%= link_to potepan_category_path(option: option_value.name) do %>
+    <%= option_value.name %><span>(<%= count_products_option(option_value.name) %>)</span>
+  <% end %>
+</li>

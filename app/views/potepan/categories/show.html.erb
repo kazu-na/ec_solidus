@@ -1,12 +1,14 @@
 <% provide(:title, @taxon.name) %>
 <!-- LIGHT SECTION -->
-<%= render 'top_light_section', taxon: @taxon %>
+<%= render 'shared/product_bar', object: @taxon %>
 <!-- MAIN CONTENT SECTION -->
 <section class="mainContent clearfix productsContent">
   <div class="container">
     <div class="row">
       <div class="col-md-3 col-sm-4 col-xs-12 sideBar">
-        <%= render 'side_bar', taxonomies: @taxonomies %>
+        <%= render 'categories', taxonomies: @taxonomies %>
+        <%= render 'colors', colors: @colors %>
+        <%= render 'sizes', sizes: @sizes %>
       </div>
       <div class="col-md-9 col-sm-8 col-xs-12">
         <%= render 'filter_area' %>
@@ -16,4 +18,4 @@
   </div>
 </section>
 <!-- LIGHT SECTION -->
-<%= render 'shared/bottom_light_section' %>
+<%= render 'shared/brand_bar' %>

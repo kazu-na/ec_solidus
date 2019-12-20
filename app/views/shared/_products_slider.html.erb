@@ -1,0 +1,9 @@
+<div class="col-xs-12">
+  <div class="productBox owl-carousel featuredProductsSlider">
+    <% object_products.each do |object_product| %>
+      <div class="slide">
+        <%= render 'shared/products_card', object_product: object_product %>
+      </div>
+    <% end %>
+  </div>
+</div>

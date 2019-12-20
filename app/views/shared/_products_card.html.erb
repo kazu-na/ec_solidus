@@ -1,0 +1,9 @@
+<%= link_to potepan_product_path(object_product.id) do %>
+  <div class="productImage clearfix">
+    <%= image_tag object_product.display_image.attachment(:product), alt: "#{object_product.name}-img" %>
+  </div>
+  <div class="productCaption clearfix">
+    <h5><%= object_product.name %></h5>
+    <h3><%= object_product.display_price %></h3>
+  </div>
+<% end %>

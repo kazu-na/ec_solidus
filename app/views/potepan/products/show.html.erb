@@ -1,10 +1,10 @@
 <% provide(:title, @product.name ) %>
 <!-- LIGHT SECTION -->
-<%= render 'light_section', product: @product %>
+<%= render 'shared/product_bar', object: @product %>
 <!-- MAIN CONTENT SECTION -->
 <section class="mainContent clearfix">
   <div class="container">
     <%= render 'single_product', product: @product %>
-    <%= render 'products_content', related_products: @related_products %>
+    <%= render 'products_content', object_products: @related_products %>
   </div>
 </section>
