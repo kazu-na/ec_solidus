@@ -11,7 +11,9 @@ RSpec.describe "HomeSystems", type: :system do
                        available_on: 1.day.ago,
                        taxons: [taxon])
     end
-    let!(:old_product) { create(:product, available_on: 2.day.ago, taxons: [taxon]) }
+    let!(:old_product) { create(:product,     available_on: 2.day.ago, taxons: [taxon]) }
+    let!(:colors)      { create(:option_type, presentation: 'Color') }
+    let!(:sizes)       { create(:option_type, presentation: 'Size') }
 
     before do
       visit potepan_path

@@ -1,17 +1,9 @@
 <div class="col-xs-12">
   <div class="productBox owl-carousel featuredProductsSlider">
     <% object_products.each do |object_product| %>
-      <%= link_to potepan_product_path(object_product.id) do %>
-        <div class="slide">
-          <div class="productImage clearfix">
-            <%= image_tag object_product.display_image.attachment(:product), alt: "product-img" %>
-          </div>
-          <div class="productCaption clearfix">
-            <h5><%= object_product.name %></h5>
-            <h3><%= object_product.display_price %></h3>
-          </div>
-        </div>
-      <% end %>
+      <div class="slide">
+        <%= render 'shared/products_card', object_product: object_product %>
+      </div>
     <% end %>
   </div>
 </div>

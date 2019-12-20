@@ -15,7 +15,9 @@ RSpec.describe "ProductsSystems", type: :system do
                        price: 300.30,
                        taxons: [taxon_1])
     end
-    let!(:product_3) { create(:product, name: 'STEIN', taxons: [taxon_2]) }
+    let!(:product_3) { create(:product,     name: 'STEIN', taxons: [taxon_2]) }
+    let!(:colors)    { create(:option_type, presentation: 'Color') }
+    let!(:sizes)     { create(:option_type, presentation: 'Size') }
 
     before do
       visit potepan_product_path(product_1.id)
