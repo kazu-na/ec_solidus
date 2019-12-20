@@ -2,12 +2,12 @@ require 'rails_helper'
 
 RSpec.describe "CategoriesRequests", type: :request do
   describe "GET #show" do
-    let(:taxonomy)      { create(:taxonomy,    name: 'Categories') }
-    let(:taxon)         { create(:taxon,       name: 'Bags', taxonomy: taxonomy) }
-    let!(:product)      { create(:product,     name: 'TOTE', taxons: [taxon]) }
-    let!(:product_etc)  { create(:product,     name: 'STATUE') }
-    let!(:colors)       { create(:option_type, presentation: 'Color') }
-    let!(:sizes)        { create(:option_type, presentation: 'Size') }
+    let(:taxonomy)      { create(:taxonomy,     name: 'Categories') }
+    let(:taxon)         { create(:taxon,        name: 'Bags', taxonomy: taxonomy) }
+    let!(:product)      { create(:product,      name: 'TOTE', taxons: [taxon]) }
+    let!(:product_etc)  { create(:product,      name: 'STATUE') }
+    let!(:colors)       { create(:option_type,  presentation: 'Color') }
+    let!(:sizes)        { create(:option_type,  presentation: 'Size') }
     let!(:option_red)   { create(:option_value, name: 'Red',   option_type: colors) }
     let!(:option_small) { create(:option_value, name: 'Small', option_type: sizes) }
     let!(:option_etc)   { create(:option_value, name: 'Big') }
