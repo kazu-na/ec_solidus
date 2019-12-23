@@ -40,7 +40,7 @@ RSpec.describe "HomeSystems", type: :system do
     end
 
     it "新着順に表示されること" do
-      expect(Spree::Product.latest_order(2)).to match [new_product, old_product]
+      expect(Spree::Product.new_products.limit(2)).to match [new_product, old_product]
     end
 
     it "新着商品から商品詳細ページへ移動" do

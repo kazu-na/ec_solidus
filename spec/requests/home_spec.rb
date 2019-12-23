@@ -22,7 +22,7 @@ RSpec.describe "HomeRequests", type: :request do
 
     it "新着数が13以上であっても上限設定数の12になっているか" do
       expect(new_products.count).to eq 20
-      expect(Spree::Product.latest_order(Potepan::HomeController::MAX_NEW_ITEM_COUNT).count).to eq 12
+      expect(Spree::Product.new_products.limit(Potepan::HomeController::MAX_NEW_ITEM_COUNT).count).to eq 12
     end
   end
 end

@@ -1,12 +1,15 @@
 <div class="row filterArea">
   <div class="col-xs-6">
-    <select name="guiest_id1" id="guiest_id1" class="select-drop">
-      <option value="0">並び替え</option>
-      <option value="1">人気順</option>
-      <option value="2">安い順</option>
-      <option value="3">新着順</option>
-      <option value="3">高い順</option>
-    </select>
+    <%= form_tag request.path, method: :get, enforce_utf8: false do %>
+      <%= hidden_field_tag :option, params[:option] if params[:option] %>
+      <%= select_tag "sort", options_for_select([
+        ["新着順", "NEW_PRODUCTS"],
+        ["安い順", "LOW_PRICE"],
+        ["高い順", "HIGH_PRICE"],
+        ["古い順", "OLD_PRODUCTS"]],
+        selected: params[:sort] || "NEW_PRODUCTS"),
+        { class: "select-drop", onchange: "submit(this.form)"} %>
+    <% end %>
   </div>
   <div class="col-xs-6">
     <div class="btn-group pull-right" role="group">
