@@ -1,20 +1,6 @@
-<div class="row filterArea">
-  <div class="col-xs-6">
-    <%= form_tag request.path, method: :get, enforce_utf8: false do %>
-      <%= hidden_field_tag :option, params[:option] if params[:option] %>
-      <%= select_tag "sort", options_for_select([
-        ["新着順", "NEW_PRODUCTS"],
-        ["安い順", "LOW_PRICE"],
-        ["高い順", "HIGH_PRICE"],
-        ["古い順", "OLD_PRODUCTS"]],
-        selected: params[:sort] || "NEW_PRODUCTS"),
-        { class: "select-drop", onchange: "submit(this.form)"} %>
-    <% end %>
-  </div>
-  <div class="col-xs-6">
-    <div class="btn-group pull-right" role="group">
-      <button type="button" class="btn btn-default active" onclick="window.location.href='<%= potepan_category_path %>'"><i class="fa fa-th" aria-hidden="true"></i><span>Grid</span></button>
-      <button type="button" class="btn btn-default" onclick="window.location.href='<%= potepan_category_path %>'"><i class="fa fa-th-list" aria-hidden="true"></i><span>List</span></button>
-    </div>
-  </div>
+<div class="col-xs-6">
+  <%= render 'filter_sort' %>
+</div>
+<div class="col-xs-6">
+  <%= render 'filter_layout' %>
 </div>

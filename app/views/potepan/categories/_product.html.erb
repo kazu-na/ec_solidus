@@ -1,0 +1,22 @@
+<% if params[:layout] == "List" %>
+  <div class="col-xs-12">
+    <%= link_to potepan_product_path(product.id) do %>
+      <div class="media">
+        <div class="media-left">
+          <%= image_tag product.display_image.attachment(:product), alt: product.name, class: "media-object" %>
+        </div>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <%= product.name %>
+          </h4>
+          <p><%= product.description %></p>
+          <h3><%= product.display_price %></h3>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <div class="productBox col-sm-4 col-xs-12">
+    <%= render 'shared/products_card', object_product: product %>
+  </div>
+<% end %>
