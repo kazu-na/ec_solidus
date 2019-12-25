@@ -12,6 +12,8 @@ RSpec.describe "CategoriesSystems", type: :system do
     let!(:product_1) do
       create(:product, name: 'TOTE',
                        price: 500.50,
+                       description: 'foobar',
+                       available_on: 1.day.ago,
                        taxons: [taxon_1],
                        option_types: [colors])
     end
@@ -21,7 +23,12 @@ RSpec.describe "CategoriesSystems", type: :system do
                        taxons: [taxon_2],
                        option_types: [sizes])
     end
-    let!(:product_3)       { create(:product, name: 'Pouch', taxons: [taxon_1]) }
+    let!(:product_3) do
+      create(:product, name: 'Pouch',
+                       price: 400.40,
+                       available_on: 2.day.ago,
+                       taxons: [taxon_1])
+    end
     let!(:product_4)       { create(:product, name: 'Cup',   taxons: [taxon_2]) }
     let!(:product_1_value) { create(:variant, product: product_1, option_values: [option_red]) }
     let!(:product_2_value) { create(:variant, product: product_2, option_values: [option_small]) }
@@ -75,6 +82,41 @@ RSpec.describe "CategoriesSystems", type: :system do
       within '.productBox' do
         expect(page).to     have_content 'STEIN'
         expect(page).not_to have_content 'Cup'
+      end
+    end
+
+    it "ドロップダウンリストで並び替えができていること" do
+      select("新着順", from: "sort")
+      expect(page).to have_select("sort", selected: "新着順")
+      select("古い順", from: "sort")
+      expect(page).to have_select("sort", selected: "古い順")
+      select("高い順", from: "sort")
+      expect(page).to have_select("sort", selected: "高い順")
+      select("安い順", from: "sort")
+      expect(page).to have_select("sort", selected: "安い順")
+    end
+
+    it "商品の並び替えが正しく表示されていること" do
+      expect(Spree::Product.in_taxon(taxon_1).sort_by_order('NEW_PRODUCTS')).to match [product_1, product_3]
+      expect(Spree::Product.in_taxon(taxon_1).sort_by_order('OLD_PRODUCTS')).to match [product_3, product_1]
+      expect(Spree::Product.in_taxon(taxon_1).sort_by_order('LOW_PRICE')).to    match [product_3, product_1]
+      expect(Spree::Product.in_taxon(taxon_1).sort_by_order('HIGH_PRICE')).to   match [product_1, product_3]
+    end
+
+    it "レイアウトの切り替えができていること" do
+      expect(page).to have_link 'List'
+      click_on 'List'
+      within '.media', match: :first do
+        expect(page).to have_content 'TOTE'
+        expect(page).to have_content '500.50'
+        expect(page).to have_content 'foobar'
+      end
+      expect(page).to have_link 'Grid'
+      click_on 'Grid'
+      within '.productBox', match: :first do
+        expect(page).to     have_content 'TOTE'
+        expect(page).to     have_content '500.50'
+        expect(page).not_to have_content 'foobar'
       end
     end
   end
