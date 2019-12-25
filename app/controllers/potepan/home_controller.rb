@@ -4,6 +4,6 @@ class Potepan::HomeController < ApplicationController
 
   def index
     @popular_taxons = Spree::Taxon.where(name: POPULAR_TAXONS)
-    @new_products   = Spree::Product.add_price_image.latest_order(MAX_NEW_ITEM_COUNT)
+    @new_products   = Spree::Product.add_price_image.new_products.limit(MAX_NEW_ITEM_COUNT)
   end
 end

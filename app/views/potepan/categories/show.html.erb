@@ -11,8 +11,12 @@
         <%= render 'sizes', sizes: @sizes %>
       </div>
       <div class="col-md-9 col-sm-8 col-xs-12">
-        <%= render 'filter_area' %>
-        <%= render 'product_box', products: @products %>
+        <div class="row filterArea">
+          <%= render 'filter_area' %>
+        </div>
+        <div class="row productListSingle">
+          <%= render partial: 'product', collection: @products %>
+        </div>
       </div>
     </div>
   </div>

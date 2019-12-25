@@ -1,0 +1,8 @@
+<div class="btn-group pull-right" role="group">
+  <%= link_to potepan_category_path(params[:id], layout: "Grid", option: params[:option], sort: params[:sort]), class: "btn btn-default #{ "active" if !params.key?(:layout) || params[:layout] == "Grid" }" do %>
+    <i class="fa fa-th" aria-hidden="true"></i><span>Grid</span>
+  <% end %>
+  <%= link_to potepan_category_path(params[:id], layout: "List", option: params[:option], sort: params[:sort]), class: "btn btn-default #{ "active" if params[:layout] == "List" }" do %>
+    <i class="fa fa-th-list" aria-hidden="true"></i><span>List</span>
+  <% end %>
+</div>

@@ -1,17 +1,6 @@
-<div class="row filterArea">
-  <div class="col-xs-6">
-    <select name="guiest_id1" id="guiest_id1" class="select-drop">
-      <option value="0">並び替え</option>
-      <option value="1">人気順</option>
-      <option value="2">安い順</option>
-      <option value="3">新着順</option>
-      <option value="3">高い順</option>
-    </select>
-  </div>
-  <div class="col-xs-6">
-    <div class="btn-group pull-right" role="group">
-      <button type="button" class="btn btn-default active" onclick="window.location.href='<%= potepan_category_path %>'"><i class="fa fa-th" aria-hidden="true"></i><span>Grid</span></button>
-      <button type="button" class="btn btn-default" onclick="window.location.href='<%= potepan_category_path %>'"><i class="fa fa-th-list" aria-hidden="true"></i><span>List</span></button>
-    </div>
-  </div>
+<div class="col-xs-6">
+  <%= render 'filter_sort' %>
+</div>
+<div class="col-xs-6">
+  <%= render 'filter_layout' %>
 </div>

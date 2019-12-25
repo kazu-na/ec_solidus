@@ -1,0 +1,11 @@
+<%= form_tag request.path, method: :get, enforce_utf8: false do %>
+  <%= hidden_field_tag :option, params[:option] if params[:option] %>
+  <%= hidden_field_tag :layout, params[:layout] if params[:layout] %>
+  <%= select_tag "sort", options_for_select([
+    ["新着順", "NEW_PRODUCTS"],
+    ["安い順", "LOW_PRICE"],
+    ["高い順", "HIGH_PRICE"],
+    ["古い順", "OLD_PRODUCTS"]],
+    selected: params[:sort] || "NEW_PRODUCTS"),
+    { id: "guiest_id1", class: "select-drop", onchange: "submit(this.form)"} %>
+<% end %>
