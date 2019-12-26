@@ -18,6 +18,10 @@ Spree::Product.class_eval do
     joins(variants: :option_values).
     where(spree_option_values: { name: option_value })
   end
+  scope :search_word,     -> (search_word) do
+    search_word = sanitize_sql_like(search_word)
+    where('name LIKE ? OR description LIKE ?', "%#{ search_word }%", "%#{ search_word }%") if search_word.present?
+  end
 
   def related_products
     Spree::Product.in_taxons(taxons).
