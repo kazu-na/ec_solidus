@@ -29,4 +29,58 @@ RSpec.describe "ProductsRequests", type: :request do
       expect(product.related_products.limit(Potepan::ProductsController::MAX_RELATED_ITEM_COUNT).count).to eq 12
     end
   end
+
+  describe "GET #search" do
+    let!(:ruby_product_1)        { create(:product, name: 'RUBY TOTE', description: 'TOTE') }
+    let!(:ruby_product_2)        { create(:product, name: 'MUG',       description: 'RUBY MUG') }
+    let!(:metacharacter_product) { create(:product, name: 'STATUE',    description: 'FOOBAR100%') }
+
+    context "検索ワードを入力したとき" do
+      before do
+        get search_potepan_products_path(search: 'RUBY')
+      end
+
+      it "正常なレスポンス" do
+        expect(response).to have_http_status(200)
+      end
+
+      it "検索ワードに該当している商品のみが表示されていること" do
+        expect(response.body).to     include 'RUBY TOTE'
+        expect(response.body).to     include 'MUG'
+        expect(response.body).not_to include 'STATUE'
+      end
+    end
+
+    context "検索ワードが空白のとき" do
+      before do
+        get search_potepan_products_path(search: '')
+      end
+
+      it "正常なレスポンス" do
+        expect(response).to have_http_status(200)
+      end
+
+      it "空白だと全ての商品が表示されていること" do
+        expect(response.body).to include 'RUBY TOTE'
+        expect(response.body).to include 'MUG'
+        expect(response.body).to include 'STATUE'
+      end
+    end
+
+    context "検索ワードにメタキャラクタを使用したとき" do
+      before do
+        get search_potepan_products_path(search: '100%')
+      end
+
+      it "正常なレスポンス" do
+        expect(response).to have_http_status(200)
+      end
+
+      it "メタキャラクタを含んだワードでも正常に検索できていること" do
+        expect(response.body).not_to include 'RUBY TOTE'
+        expect(response.body).not_to include 'MUG'
+        expect(response.body).to     include 'STATUE'
+      end
+    end
+  end
 end

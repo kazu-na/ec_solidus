@@ -39,11 +39,24 @@ RSpec.describe "ProductsSystems", type: :system do
 
     it "関連した商品が表示され、閲覧中の商品と関連していない商品は表示されないこと" do
       within '.productBox' do
-        expect(page).to have_content     'BAG'
-        expect(page).to have_content     '300.30'
+        expect(page).to     have_content 'BAG'
+        expect(page).to     have_content '300.30'
         expect(page).not_to have_content 'TOTE'
         expect(page).not_to have_content 'STEIN'
       end
+    end
+
+    it "検索ページから商品詳細ページへ移動" do
+      visit search_potepan_products_path(search: 'TOTE')
+      within '.productBox' do
+        expect(page).to     have_content 'TOTE'
+        expect(page).to     have_content '500.50'
+        expect(page).not_to have_content 'BAG'
+        expect(page).not_to have_content 'STEIN'
+      end
+      expect(page).to have_link 'TOTE'
+      click_on 'TOTE'
+      expect(current_path).to eq potepan_product_path(product_1.id)
     end
   end
 end

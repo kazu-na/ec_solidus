@@ -1,0 +1,11 @@
+<li class="dropdown searchBox">
+  <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-search"></i></a>
+  <ul class="dropdown-menu dropdown-menu-right">
+    <li>
+      <%= form_with url: search_potepan_products_path, id: "form01", class:"input-group", method: :get, local: true, skip_enforcing_utf8: true do |f| %>
+        <%= f.text_field :search, class: "form-control", placeholder: "Search…", 'aria-describedby': "basic-addon2" %>
+        <%= tag.button tag.span "検索", class: 'input-group-addon addPointer', id: "basic-addon2", onclick: "submit(this.form)" %>
+      <% end %>
+    </li>
+  </ul>
+</li>

@@ -1,6 +1,6 @@
 <% provide(:title, @product.name ) %>
 <!-- LIGHT SECTION -->
-<%= render 'shared/product_bar', object: @product %>
+<%= render 'shared/product_bar', title_name: @product.name, active_name: @product.name %>
 <!-- MAIN CONTENT SECTION -->
 <section class="mainContent clearfix">
   <div class="container">

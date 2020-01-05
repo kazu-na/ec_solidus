@@ -1,0 +1,17 @@
+<% provide(:title, "Results by Search #{ @search_word }" ) %>
+<!-- LIGHT SECTION -->
+<%= render 'shared/product_bar', title_name: "'#{@search_word}' 検索結果： #{@products.count} 件", active_name: "search" %>
+<!-- MAIN CONTENT SECTION -->
+<section class="mainContent clearfix productsContent">
+  <div class="container">
+    <div class="row">
+      <% @products.each do |product| %>
+        <div class="productBox col-sm-3 col-xs-12">
+          <%= render 'shared/products_card', object_product: product %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
+<!-- LIGHT SECTION -->
+<%= render 'shared/brand_bar' %>
