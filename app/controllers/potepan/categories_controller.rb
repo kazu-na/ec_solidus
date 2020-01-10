@@ -6,7 +6,7 @@ class Potepan::CategoriesController < ApplicationController
     @taxonomies    = Spree::Taxonomy.includes(:taxons)
     @colors        = Spree::OptionType.find_by(presentation: "Color").option_values
     @sizes         = Spree::OptionType.find_by(presentation: "Size").option_values
-    @products      = products_search.sort_by_order(params[:sort])
+    @products      = products_search.sort_by_order(params[:sort]).position_order
   end
 
   private

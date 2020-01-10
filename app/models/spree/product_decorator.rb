@@ -6,15 +6,15 @@ Spree::Product.class_eval do
   scope :sort_by_order,   -> (sort) do
     case sort
     when "NEW_PRODUCTS"
-      reorder(nil).new_products.position_order
+      reorder(nil).new_products
     when "OLD_PRODUCTS"
-      reorder(nil).old_products.position_order
+      reorder(nil).old_products
     when "LOW_PRICE"
-      unscope(:order).ascend_by_master_price.position_order
+      unscope(:order).ascend_by_master_price
     when "HIGH_PRICE"
-      unscope(:order).descend_by_master_price.position_order
+      unscope(:order).descend_by_master_price
     else
-      reorder(nil).new_products.position_order
+      reorder(nil).new_products
     end
   end
   scope :search_option,   -> (option_value) do

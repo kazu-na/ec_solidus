@@ -20,6 +20,7 @@ RSpec.describe "CategoriesSystems", type: :system do
     let!(:product_2) do
       create(:product, name: 'STEIN',
                        price: 300.30,
+                       available_on: 1.day.ago,
                        taxons: [taxon_2],
                        option_types: [sizes])
     end
@@ -29,7 +30,7 @@ RSpec.describe "CategoriesSystems", type: :system do
                        available_on: 2.day.ago,
                        taxons: [taxon_1])
     end
-    let!(:product_4)       { create(:product, name: 'Cup',   taxons: [taxon_2]) }
+    let!(:product_4)       { create(:product, name: 'Cup', available_on: 2.day.ago, taxons: [taxon_2]) }
     let!(:product_1_value) { create(:variant, product: product_1, option_values: [option_red]) }
     let!(:product_2_value) { create(:variant, product: product_2, option_values: [option_small]) }
 
