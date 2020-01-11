@@ -2,6 +2,7 @@ Spree::Product.class_eval do
   scope :add_price_image, -> { includes(master: [:default_price, :images]) }
   scope :new_products,    -> { order(available_on: :desc) }
   scope :old_products,    -> { order(available_on: :asc) }
+  scope :position_order,  -> { order("spree_assets.position" => :asc) }
   scope :sort_by_order,   -> (sort) do
     case sort
     when "NEW_PRODUCTS"
@@ -12,6 +13,8 @@ Spree::Product.class_eval do
       unscope(:order).ascend_by_master_price
     when "HIGH_PRICE"
       unscope(:order).descend_by_master_price
+    else
+      reorder(nil).new_products
     end
   end
   scope :search_option,   -> (option_value) do
